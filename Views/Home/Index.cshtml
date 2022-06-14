@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    @using Microsoft.AspNetCore.Http
+
+    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var stringChars = new char[14];
+    var random = new Random();
+
+    for (int i = 0; i < stringChars.Length; i++)
+    {
+        stringChars[i] = chars[random.Next(chars.Length)];
+    }
+
+    var finalString = new String(stringChars);
+}
+
+<div class="text-center">
+    <h1>Random Passcode (Passcode @Context.Session.GetInt32("counter"))</h1>
+    <h1 class="display-4"> @finalString </h1>
+    <button><a href="/">New Passcode</a></button>
+
+</div>
